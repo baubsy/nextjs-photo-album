@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 
 export function getStaticProps(){
-    const dummyPhotos = {id: "1", path:"/../../photos/prize.PNG"}
+    const dummyPhotos = {id: "1", path:"/photos/prize.PNG"}
     return {
         props:{
             dummyPhotos,
@@ -28,7 +28,8 @@ export default function Photo({dummyPhotos}) {
             </Head>
             <h1>Photo Page</h1>
             <Image
-                src={"/../../photos/prize.PNG"}
+                priority
+                src={dummyPhotos.path}
                 alt="test"
                 height={200}
                 width={200}
