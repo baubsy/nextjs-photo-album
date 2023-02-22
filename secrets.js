@@ -1,3 +1,3 @@
-const faunaKey = "fnAE9YPYoGAAQ4cPKfF7mK-vxlfAbi15oC29JMHe";
+const faunaKey = "fnAE9YdsCVAAQx-Cq2zbBdHPw5_iE2WLEh8t9WJc";
 
 export default faunaKey;
