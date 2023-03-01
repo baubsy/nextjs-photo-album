@@ -1,17 +1,20 @@
 import Head from 'next/head';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
-export async function getStaticProps() {
-    const res = await fetch("http://localhost:3000/api/getPhoto")
-    const photos = await res.json();
-    return {
-        props: {
-            photos
-        }
+
+export default function Album() {
+    const [photos, setPhotos] = useState({});
+    const fetchPhotos = async () => {
+        const res = await fetch("http://localhost:3000/api/getPhoto");
+        const data = await res.json();
+        console.log(data);
+        return data;
     }
-}
-export default function Album({photos}) {
-    console.log(photos)
-
+    useEffect((() => {
+      setPhotos(fetchPhotos());
+    }),[])
+    console.log(photos);
     return (
         <div>
             <Head>
