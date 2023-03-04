@@ -1,7 +1,7 @@
 const {Ref} = require('faunadb');
 const faunadb = require("faunadb");
 
-import faunaKey from '../../../secrets.js'
+import {faunaKey} from '../../../secrets.js'
 
 const q = faunadb.query;
 const secret = faunaKey;
