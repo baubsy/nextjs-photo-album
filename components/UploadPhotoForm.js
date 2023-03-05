@@ -6,12 +6,17 @@ import imgurUpload from "../lib/Imgur";
 const UploadPhotoForm = () => {
   const [photoName, setPhotoName] = useState("");
   const [photo, setPhoto] = useState();
+  const [link,setLink] = useState("");
 
-
+  useEffect(() => {
+    console.log(link);
+  }, [link])
   const onClick = () => {
     //console.log(photoName);
     //console.log(photo);
-    imgurUpload(photo);
+    imgurUpload(photo, setLink);
+    console.log(link);
+    
   }
 
   return (
