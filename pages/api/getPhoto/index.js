@@ -7,7 +7,7 @@ const q = faunadb.query;
 const secret = faunaKey;
 
 const client = new faunadb.Client({
-    secret,
+    secret: faunaKey,
     domain: "db.fauna.com"
 });
 
