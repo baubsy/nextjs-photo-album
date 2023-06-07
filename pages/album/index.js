@@ -32,8 +32,8 @@ export default function Album() {
             <h1>Photos</h1>
             <ImageList sx={{ width: 500, height: 450 }} col={3} rowHeight={164}>
                 {photos.map((photo) => {
-                    {console.log('test')}
-                    <ImageListItem key={photo.data.path}>
+                    return (
+                        <ImageListItem key={photo.data.path}>
                         <Image
                             priority
                             src={photo.data.path}
@@ -41,20 +41,10 @@ export default function Album() {
                             height={200}
                             width={200}
                         />
-                    </ImageListItem>;
+                        </ImageListItem>
+                    )
                 })}
             </ImageList>
-            {photos.map((photo) => {
-                return (
-                    <Image
-                        priority
-                        src={photo.data.path}
-                        alt="test"
-                        height={200}
-                        width={200}
-                    />
-                );
-            })}
         </div>
     );
 }
