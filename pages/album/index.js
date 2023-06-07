@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { ImageList, ImageListItem } from "@mui/material";
 
 export default function Album() {
     const [photos, setPhotos] = useState([]);
@@ -29,6 +30,20 @@ export default function Album() {
                 <title>Album Title</title>
             </Head>
             <h1>Photos</h1>
+            <ImageList sx={{ width: 500, height: 450 }} col={3} rowHeight={164}>
+                {photos.map((photo) => {
+                    {console.log('test')}
+                    <ImageListItem key={photo.data.path}>
+                        <Image
+                            priority
+                            src={photo.data.path}
+                            alt="test"
+                            height={200}
+                            width={200}
+                        />
+                    </ImageListItem>;
+                })}
+            </ImageList>
             {photos.map((photo) => {
                 return (
                     <Image
