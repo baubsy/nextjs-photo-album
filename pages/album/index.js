@@ -1,15 +1,19 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import {PhotoModal} from "../../components/photoModal.js";
+import  PhotoModal  from "../../components/PhotoModal.js";
 import { useEffect, useState } from "react";
-import { ImageList, ImageListItem, Modal } from "@mui/material";
+import { ImageList, ImageListItem } from "@mui/material";
 
 export default function Album() {
     const [photos, setPhotos] = useState([]);
     const [isLoading, setLoading] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
-    const handleOpen = () => setModalOpen(true);
+    const [selectedPhoto, setSelectedPhoto] = useState({});
+    const handleOpen = (photo) => {
+        setModalOpen(true);
+        setSelectedPhoto(photo)
+    }
     const handleClose = () => setModalOpen(false);
 
     useEffect(() => {
@@ -41,7 +45,7 @@ export default function Album() {
                         <React.Fragment>
                             <ImageListItem key={photo.data.path}>
                                 <Image
-                                    onClick={handleOpen}
+                                    onClick={() => handleOpen(photo)}
                                     priority
                                     src={photo.data.path}
                                     alt="test"
@@ -49,12 +53,12 @@ export default function Album() {
                                     width={200}
                                 />
                             </ImageListItem>
-                            <Modal open={modalOpen} onClose={handleClose}>
-                            <PhotoModal photo={photo} />
-                            </Modal>
+                            
                         </React.Fragment>
+                        
                     );
                 })}
+                <PhotoModal photo={selectedPhoto} open={modalOpen} onClose={handleClose}/>
             </ImageList>
         </div>
     );
