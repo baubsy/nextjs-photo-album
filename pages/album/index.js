@@ -1,9 +1,9 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import  PhotoModal  from "../../components/PhotoModal.js";
+import PhotoModal from "../../components/PhotoModal.js";
 import { useEffect, useState } from "react";
-import { ImageList, ImageListItem } from "@mui/material";
+import { ImageList, ImageListItem, Box, Grid } from "@mui/material";
 
 export default function Album() {
     const [photos, setPhotos] = useState([]);
@@ -12,8 +12,8 @@ export default function Album() {
     const [selectedPhoto, setSelectedPhoto] = useState({});
     const handleOpen = (photo) => {
         setModalOpen(true);
-        setSelectedPhoto(photo)
-    }
+        setSelectedPhoto(photo);
+    };
     const handleClose = () => setModalOpen(false);
 
     useEffect(() => {
@@ -34,32 +34,40 @@ export default function Album() {
 
     console.log(photos);
     return (
-        <div>
+        <Grid container sx={{ display: "flex", justifyContent: "center" }}>
             <Head>
                 <title>Album Title</title>
             </Head>
-            <h1>Photos</h1>
-            <ImageList sx={{ width: 500, height: 450 }} col={3} rowHeight={164}>
-                {photos.map((photo) => {
-                    return (
-                        <React.Fragment>
-                            <ImageListItem key={photo.data.path}>
-                                <Image
-                                    onClick={() => handleOpen(photo)}
-                                    priority
-                                    src={photo.data.path}
-                                    alt="test"
-                                    height={200}
-                                    width={200}
-                                />
-                            </ImageListItem>
-                            
-                        </React.Fragment>
-                        
-                    );
-                })}
-                <PhotoModal photo={selectedPhoto} open={modalOpen} onClose={handleClose}/>
-            </ImageList>
-        </div>
+            <Grid item xs={12} textAlign={"center"}>
+                <h1>Photos</h1>
+            </Grid>
+                <ImageList
+                    sx={{ width: 500, height: 450 }}
+                    col={3}
+                    rowHeight={164}
+                >
+                    {photos.map((photo) => {
+                        return (
+                            <React.Fragment>
+                                <ImageListItem key={photo.data.path}>
+                                    <Image
+                                        onClick={() => handleOpen(photo)}
+                                        priority
+                                        src={photo.data.path}
+                                        alt="test"
+                                        height={200}
+                                        width={200}
+                                    />
+                                </ImageListItem>
+                            </React.Fragment>
+                        );
+                    })}
+                </ImageList>
+            <PhotoModal
+                photo={selectedPhoto}
+                open={modalOpen}
+                onClose={handleClose}
+            />
+        </Grid>
     );
 }
