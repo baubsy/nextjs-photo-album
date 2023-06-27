@@ -6,7 +6,7 @@ const PhotoModal = (props) => {
     if (props.photo.data != null) {
         return (
             <Dialog open={props.open} onClose={props.onClose}>
-                <Box sx={{ backgroundColor: "white", padding: "15px" }}>
+                <Box sx={{ backgroundColor: "white"}}>
                     <Typography
                         variant="h5"
                         component="h5"
@@ -14,8 +14,9 @@ const PhotoModal = (props) => {
                     >
                         Photo Title
                     </Typography>
-                    <Box sx={{ height: "1000px", width: "1000px" }}>
+                    <Box sx={{ height: "1000px", width: "1000px"}}>
                         <Image
+                            style={{padding: "25px"}}
                             priority
                             src={props.photo.data.path}
                             alt="test"
