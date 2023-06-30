@@ -11,6 +11,7 @@ const PhotoModal = (props) => {
                         variant="h5"
                         component="h5"
                         sx={{ margin: "auto" }}
+                        textAlign={"center"}
                     >
                         Photo Title
                     </Typography>
