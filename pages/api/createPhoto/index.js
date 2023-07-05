@@ -16,11 +16,18 @@ export default async function (req, res) {
     const photo = JSON.parse(req.body);
     console.log(photo.path);
     const dummyPhoto = {id: "2", path:"/photos/prize.PNG"};
+    const date = new Date();
+
     try {
         const dbs = await client.query(
             q.Create(q.Collection("photos"), {
                 data: {
-                    path: photo.path
+                    path: photo.path,
+                    album: "placeholder",
+                    user: "placeholder",
+                    x: "placeholder",
+                    y: "placeholder",
+                    date: date.toUTCString()
 
                 }
             })
