@@ -13,14 +13,21 @@ const client = new faunadb.Client({
 export default async function (req, res) {
     console.log("createPhoto handler")
     console.log(req.body);
-    const photo = JSON.parse(req.body);
-    console.log(photo.path);
+    const photoData = JSON.parse(req.body);
+    //console.log(photo.path);
     const dummyPhoto = {id: "2", path:"/photos/prize.PNG"};
+    const date = new Date();
+
     try {
         const dbs = await client.query(
             q.Create(q.Collection("photos"), {
                 data: {
-                    path: photo.path
+                    path: photoData.path,
+                    album: photoData.album,
+                    user: photoData.user,
+                    width: photoData.width,
+                    height: photoData.height,
+                    date: date.toUTCString()
 
                 }
             })
