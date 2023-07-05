@@ -5,30 +5,42 @@ import imgurUpload from "../lib/Imgur";
 const UploadPhotoForm = () => {
     const [photoName, setPhotoName] = useState("");
     const [photo, setPhoto] = useState();
-    const [link, setLink] = useState("");
+    const [photoData, setPhotoData] = useState({});
 
     useEffect(() => {
-      //console.log('link');
+        //console.log('link');
         //console.log(link);
+        /*
         const formData = new FormData();
-        formData.append('path', link)
-        const headers = {"Content-Type" : 'application/json'}
+        formData.append('path', photoData.link)
+        formData.append('height', photoData.height)
+        formData.append('width', photoData.width)
+        formData.append('user', "placeholder")
+        formData.append('album', "placeholder")
+        */
+        const headers = { "Content-Type": "application/json" };
         const reqOptions = {
-            method: 'POST',
-            body: JSON.stringify({path: link}),
-            redirect: 'follow'
+            method: "POST",
+            body: JSON.stringify({
+                path: photoData.link,
+                height: photoData.height,
+                width: photoData.width,
+                user: "placeholder",
+                album: "placeholder",
+            }),
+            redirect: "follow",
         };
         console.log(reqOptions);
-        if(link !== ""){
-          console.log('Pre createPhoto fetch')
-          fetch("http://192.168.1.76:3000/api/createPhoto", reqOptions);
+        if (photoData.link !== "") {
+            console.log("Pre createPhoto fetch");
+            fetch("http://192.168.1.76:3000/api/createPhoto", reqOptions);
         }
-    }, [link]);
+    }, [photoData]);
     const onClick = () => {
         //console.log(photoName);
         //console.log(photo);
-        imgurUpload(photo, setLink);
-        console.log(link);
+        imgurUpload(photo, setPhotoData);
+        //console.log(link);
     };
 
     return (
