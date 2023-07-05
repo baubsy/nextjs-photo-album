@@ -5,7 +5,7 @@ import imgurUpload from "../lib/Imgur";
 const UploadPhotoForm = () => {
     const [photoName, setPhotoName] = useState("");
     const [photo, setPhoto] = useState();
-    const [photoData, setPhotoData] = useState({});
+    const [photoData, setPhotoData] = useState(false);
 
     useEffect(() => {
         //console.log('link');
@@ -31,7 +31,7 @@ const UploadPhotoForm = () => {
             redirect: "follow",
         };
         console.log(reqOptions);
-        if (photoData.link !== "") {
+        if (photoData !== false) {
             console.log("Pre createPhoto fetch");
             fetch("http://192.168.1.76:3000/api/createPhoto", reqOptions);
         }
