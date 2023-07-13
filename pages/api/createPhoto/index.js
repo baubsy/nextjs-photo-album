@@ -27,6 +27,7 @@ export default async function (req, res) {
                     user: photoData.user,
                     width: photoData.width,
                     height: photoData.height,
+                    deleteHash: photoData.deleteHash,
                     date: date.toUTCString()
 
                 }

@@ -25,6 +25,7 @@ const UploadPhotoForm = () => {
                 path: photoData.link,
                 height: photoData.height,
                 width: photoData.width,
+                deleteHash: photoData.deletehash,
                 user: "placeholder",
                 album: "placeholder",
             }),
