@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import PhotoModal from "../../components/PhotoModal.js";
+import PhotoModal from "../../components/photoModal.js";
 import { useEffect, useState } from "react";
 import { ImageList, ImageListItem, Box, Grid } from "@mui/material";
 
